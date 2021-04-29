@@ -4,9 +4,9 @@ public class Main {
 		GazEventSource gaz_source = new GazEventSource();
 		IncendieEventSource inc_source = new IncendieEventSource();
 		RadiationEventSource rad_source = new RadiationEventSource();
-		AnomalieEvent anomalie_gaz = new GazEvent();
-		AnomalieEvent anomalie_incendie = new IncendieEvent();
-		AnomalieEvent anomalie_radiation = new RadiationEvent();
+		AnomalieEvent anomalie_gaz = new GazEvent(gaz_source);
+		AnomalieEvent anomalie_incendie = new IncendieEvent(inc_source);
+		AnomalieEvent anomalie_radiation = new RadiationEvent(rad_source);
 		
 	
 		Anomalie_Ecouteur ecouteur1 = new Anomalie_Ecouteur();

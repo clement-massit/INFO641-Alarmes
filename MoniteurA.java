@@ -1,18 +1,34 @@
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class MoniteurA {
+public class MoniteurA implements GazEventListener, IncendieEventListener{
 	private Collection<AnomalieEvent> liste_event =  new ArrayList<AnomalieEvent>();
 
 	public MoniteurA() {
 		
-		
 	}
-	private void add_to_list_event(AnomalieEvent event) {
-		liste_event.add(event);
+	
+	public void add_to_list_event(AnomalieEvent event) {
+		if (event.get_type_anomalie() == "Gaz" || event.get_type_anomalie() == "Incendie") {
+			liste_event.add(event);
+		}
+		System.out.println(liste_event);
+		
 	}
 	
 	public void display_moniteurA() {
 		System.out.println(liste_event);
+	}
+
+	@Override
+	public void onEvent(IncendieEvent inc_event) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onEvent(GazEvent gaz_event) {
+		// TODO Auto-generated method stub
+		
 	}
 }

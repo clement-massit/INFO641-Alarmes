@@ -25,5 +25,9 @@ public class Main {
 		anomalie_gaz.print_Anomalie();
 		anomalie_incendie.print_Anomalie();
 		anomalie_radiation.print_Anomalie();
+		
+		MoniteurA moniteur_A = new MoniteurA();
+		moniteur_A.add_to_list_event(anomalie_gaz);
+		
 	}
 }

@@ -15,6 +15,6 @@ public class Main {
 		
 		gaz_source.genEvent();
 		inc_source.genEvent();
-		
+		rad_source.genEvent();
 	}
 }

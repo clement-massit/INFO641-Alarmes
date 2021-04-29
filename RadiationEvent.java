@@ -1,11 +1,11 @@
-import java.util.Date;
+
 
 public class RadiationEvent extends AnomalieEvent {
 	private int level_rad;
 
-	public RadiationEvent(Date date_apparition, String localisation, int niveau, int level_rad) {
+	public RadiationEvent() {
 		super();
-		this.level_rad = level_rad;
+		
 	}
 
 	public int getLevel_rad() {

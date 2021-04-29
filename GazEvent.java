@@ -1,4 +1,3 @@
-import java.util.Date;
 
 public class GazEvent extends AnomalieEvent{
 	private String type;

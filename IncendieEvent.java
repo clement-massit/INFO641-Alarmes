@@ -1,11 +1,10 @@
-import java.util.Date;
 
 public class IncendieEvent extends AnomalieEvent{
 	private String state;
 
-	public IncendieEvent(Date date_apparition, String localisation, int niveau, String state) {
+	public IncendieEvent() {
 		super();
-		this.state = state;
+		
 	}
 
 	public String getState() {

@@ -1,20 +1,15 @@
 
 public class IncendieEvent extends AnomalieEvent{
-	private String state;
-
+	private String type_anomalie = "Incendie";
+	
 	public IncendieEvent() {
 		super();
 		
 	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
 	
-	
+	@Override
+	public String get_type_anomalie() {
+		return(this.type_anomalie);
+	}
 		
 }

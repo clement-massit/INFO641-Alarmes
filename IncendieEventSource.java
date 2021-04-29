@@ -7,7 +7,7 @@ public class IncendieEventSource {
 	
 	
 	public void genEvent() {
-		IncendieEvent inc_1 = new IncendieEvent();
+		IncendieEvent inc_1 = new IncendieEvent(this);
 		for (IncendieEventListener listener : liste_incendie_event) {
 			listener.onEvent(inc_1);
 		}

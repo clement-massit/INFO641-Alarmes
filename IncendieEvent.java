@@ -1,9 +1,13 @@
 
 public class IncendieEvent extends AnomalieEvent{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String state;
 
-	public IncendieEvent() {
-		super();
+	public IncendieEvent(Object source) {
+		super(source);
 		
 	}
 

@@ -8,7 +8,7 @@ private Collection<RadiationEventListener> liste_rad_event =  new ArrayList<Radi
 	}
 	
 	public void genEvent() {
-		RadiationEvent rad_1 = new RadiationEvent();
+		RadiationEvent rad_1 = new RadiationEvent(this);
 		for (RadiationEventListener listener : liste_rad_event) {
 			listener.onEvent(rad_1);
 		}

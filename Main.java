@@ -8,7 +8,7 @@ public class Main {
 		AnomalieEvent anomalie_incendie = new IncendieEvent();
 		AnomalieEvent anomalie_radiation = new RadiationEvent();
 		
-		
+	
 		Anomalie_Ecouteur ecouteur1 = new Anomalie_Ecouteur();
 		
 		gaz_source.addListener(ecouteur1);
@@ -17,7 +17,9 @@ public class Main {
 		
 		
 		gaz_source.genEvent();
+		System.out.println("==========");
 		inc_source.genEvent();
+		System.out.println("==========");
 		rad_source.genEvent();
 		
 		anomalie_gaz.print_Anomalie();

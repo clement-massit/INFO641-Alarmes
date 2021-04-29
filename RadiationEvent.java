@@ -1,11 +1,15 @@
 
 
 public class RadiationEvent extends AnomalieEvent {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int level_rad;
 	private String type_anomalie = "Radiation";
 
-	public RadiationEvent() {
-		super();
+	public RadiationEvent(Object source) {
+		super(source);
 		
 	}
 

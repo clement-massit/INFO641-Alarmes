@@ -1,10 +1,15 @@
 
 public class GazEvent extends AnomalieEvent{
+
 	private String type_gaz;
 	private String type_anomalie = "Gaz";
 
-	public GazEvent() {
-		super();
+
+	private static final long serialVersionUID = 1L;
+
+
+	public GazEvent(Object source) {
+		super(source);
 
 	}
 	

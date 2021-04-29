@@ -1,13 +1,15 @@
 import java.util.Date;
+import java.util.EventObject;
 import java.text.SimpleDateFormat;
 
-public class AnomalieEvent {
+public abstract class AnomalieEvent extends EventObject {
 	private Date date_apparition;
 	private String localisation;
 	private int niveau;
 	private SimpleDateFormat format;
 	
-	public AnomalieEvent() {
+	public AnomalieEvent(Object source) {
+		super(source);
 		this.date_apparition = new Date();
 		this.setFormat(new SimpleDateFormat("'le' dd MMMM yyyy 'à' hh:mm:ss"));
 		

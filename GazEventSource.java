@@ -8,7 +8,7 @@ public class GazEventSource {
 	}
 	
 	public void genEvent() {
-		GazEvent gaz_1 = new GazEvent();
+		GazEvent gaz_1 = new GazEvent(this);
 		for (GazEventListener listener : liste_gaz_event) {
 			listener.onEvent(gaz_1);
 		}

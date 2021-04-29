@@ -16,7 +16,5 @@ public class GazEventSource {
 	
 	public void addListener(Anomalie_Ecouteur ecouteur) {
 		liste_gaz_event.add(ecouteur);
-	}
-	
-	
+	}	
 }

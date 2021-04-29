@@ -2,8 +2,6 @@
 public class GazEvent extends AnomalieEvent{
 	private String type_gaz;
 	private String type_anomalie = "Gaz";
-	
-
 
 	public GazEvent(Object source) {
 		super(source);

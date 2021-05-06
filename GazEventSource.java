@@ -3,12 +3,24 @@ import java.util.Collection;
 
 public class GazEventSource {
 	private Collection<GazEventListener> liste_gaz_event =  new ArrayList<GazEventListener>();
+	public String localisation;
 	
-	public GazEventSource() {
+	public GazEventSource(String localisation) {
+		this.setLocalisation(localisation);
+	}	
+	
+	public String getLocalisation() {
+		return localisation;
 	}
-	
-	public void genEvent() {
+	public void setLocalisation(String localisation) {
+		this.localisation = localisation;
+	}
+
+
+	public void genEvent(int level) {
 		GazEvent gaz_1 = new GazEvent(this);
+		gaz_1.setLocalisation(this.localisation);
+		gaz_1.setNiveau(level);
 		for (GazEventListener listener : liste_gaz_event) {
 			listener.onEvent(gaz_1);
 		}

@@ -48,7 +48,7 @@ public abstract class AnomalieEvent extends EventObject {
 	}
 	
 	public void print_Anomalie() {
-		System.out.println("Détail de l'anomalie :");
+		System.out.println("Détail de l'anomalie " + this + ":");
 		System.out.println(" - Type de danger : " + this.get_type_anomalie());
 		System.out.println(" - Date : " + this.date_apparition);
 		System.out.println(" - Localisation : " + this.localisation);

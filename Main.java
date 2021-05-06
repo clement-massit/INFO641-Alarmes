@@ -8,6 +8,8 @@ public class Main {
 		AnomalieEvent anomalie_incendie = new IncendieEvent(inc_source);
 		AnomalieEvent anomalie_radiation = new RadiationEvent(rad_source);
 		
+		
+		
 	
 		Anomalie_Ecouteur ecouteur1 = new Anomalie_Ecouteur();
 		
@@ -28,6 +30,15 @@ public class Main {
 		
 		MoniteurA moniteur_A = new MoniteurA();
 		moniteur_A.add_to_list_event(anomalie_gaz);
+		moniteur_A.add_to_list_event(anomalie_incendie);
+		moniteur_A.add_to_list_event(anomalie_radiation);
+		
+		MoniteurB moniteur_B = new MoniteurB();
+		moniteur_B.ajout_event(anomalie_gaz);
+		moniteur_B.ajout_event(anomalie_incendie);
+		moniteur_B.ajout_event(anomalie_radiation);
+		System.out.println("==========");
+		moniteur_B.affiche_liste();
 		
 	}
 }

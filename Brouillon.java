@@ -63,8 +63,8 @@ public class Brouillon{
 		comboBox_2.setBounds(272, 6, 55, 20);
 		panel.add(comboBox_2);
 		
-		JButton btnNewButton = new JButton("Afficher");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnAfficher = new JButton("Afficher");
+		btnAfficher.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Anomalie_Ecouteur ecouteur1 = new Anomalie_Ecouteur();
 				
@@ -89,8 +89,8 @@ public class Brouillon{
 				
 			}
 		});
-		btnNewButton.setBounds(159, 51, 120, 23);
-		panel.add(btnNewButton);		
+		btnAfficher.setBounds(159, 51, 120, 23);
+		panel.add(btnAfficher);		
 	}
 
 }

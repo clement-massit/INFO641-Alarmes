@@ -86,21 +86,11 @@ public class Brouillon{
 					radiation_source.addListener(ecouteur1);
 					radiation_source.genEvent();
 				}
+				
 			}
 		});
 		btnNewButton.setBounds(159, 51, 120, 23);
-		panel.add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton_1.setBounds(173, 98, 89, 23);
-		panel.add(btnNewButton_1);
-		
-		
-		
+		panel.add(btnNewButton);		
 	}
 
 }

@@ -1,5 +1,5 @@
 
-public class Main {
+public class Main{
 	public static void main(String[] args) {
 		GazEventSource gaz_source = new GazEventSource();
 		IncendieEventSource inc_source = new IncendieEventSource();

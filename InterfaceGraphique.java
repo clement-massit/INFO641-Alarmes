@@ -1,11 +1,13 @@
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class InterfaceGraphique extends JFrame {
+public class InterfaceGraphique extends JFrame, Main{
 	private JPanel pan = new JPanel();
 	private JButton bouton = new JButton("Mon bouton");
 
@@ -26,12 +28,20 @@ public class InterfaceGraphique extends JFrame {
     
 	String[] level = {"1", "2", "3"};
 	JComboBox Level = new JComboBox(level);
+	
+	JButton btnNewButton = new JButton("Afficher");
+	btnNewButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			
+		}
+	});
+	
 
 	pan.add(Batiments);
 	pan.add(Anomalie);
 	pan.add(Level);
 	pan.add(bouton);
-	
+	pan.add(btnNewButton);
 	
 	this.setContentPane(pan);
     this.setVisible(true);

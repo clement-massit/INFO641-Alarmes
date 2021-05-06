@@ -66,7 +66,6 @@ public class Brouillon{
 		JButton btnNewButton = new JButton("Afficher");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MoniteurB moniteur_B = new MoniteurB();
 				Anomalie_Ecouteur ecouteur1 = new Anomalie_Ecouteur();
 				
 				if(comboBox_1.getSelectedItem().toString() == "Gaz") {
@@ -74,24 +73,19 @@ public class Brouillon{
 					AnomalieEvent anomalie_gaz = new GazEvent(gaz_source);
 					gaz_source.addListener(ecouteur1);
 					gaz_source.genEvent();
-					moniteur_B.ajout_event(anomalie_gaz);
 				}
 				if(comboBox_1.getSelectedItem().toString() == "Incendie") {
 					IncendieEventSource incendie_source = new IncendieEventSource();
 					AnomalieEvent anomalie_incendie = new IncendieEvent(incendie_source);
 					incendie_source.addListener(ecouteur1);
 					incendie_source.genEvent();
-					moniteur_B.ajout_event(anomalie_incendie);
 				}
 				if(comboBox_1.getSelectedItem().toString() == "Radiation") {
 					RadiationEventSource radiation_source = new RadiationEventSource();
 					AnomalieEvent anomalie_radiation = new RadiationEvent(radiation_source);
 					radiation_source.addListener(ecouteur1);
 					radiation_source.genEvent();
-					moniteur_B.ajout_event(anomalie_radiation);
 				}
-
-				moniteur_B.affiche_liste();
 			}
 		});
 		btnNewButton.setBounds(159, 51, 120, 23);

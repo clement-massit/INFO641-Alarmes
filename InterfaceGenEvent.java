@@ -5,8 +5,6 @@ import java.awt.BorderLayout;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
@@ -15,19 +13,18 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
 public class InterfaceGenEvent{
-	private Collection<GazEvent> liste_gaz_event =  new ArrayList<GazEvent>();
+
 	private JFrame frame;
 	private JTextField type_gaz;
-	
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(Liste_anomalie liste_ano) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InterfaceGenEvent window = new InterfaceGenEvent();
+					InterfaceGenEvent window = new InterfaceGenEvent(liste_ano);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,13 +36,13 @@ public class InterfaceGenEvent{
 	/**
 	 * Create the application.
 	 */
-	public InterfaceGenEvent() {
-		initialize();
+	public InterfaceGenEvent(Liste_anomalie liste_ano) {
+		initialize(liste_ano);
 	}
 	/*
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(Liste_anomalie liste_ano) {
 		
 		/*
 		 * Cr�ation des listes pour les JComboBox
@@ -86,11 +83,6 @@ public class InterfaceGenEvent{
 		btnBack.setBounds(367, 199, 89, 23);
 		panel.add(btnBack);
 		btnBack.setVisible(false);
-		
-		JButton btn_open_monitor = new JButton("Ouvrir Moniteurs");
-		btn_open_monitor.setBounds(185, 199, 134, 23);
-		panel.add(btn_open_monitor);
-		btn_open_monitor.setVisible(true);
 		
 		JLabel affichage_type_ano = new JLabel("Vous avez s\u00E9l\u00E9ctionn\u00E9 un \u00E9venement de type ");
 		affichage_type_ano.setHorizontalAlignment(SwingConstants.CENTER);
@@ -201,7 +193,6 @@ public class InterfaceGenEvent{
 				niveau_rad.setVisible(false);
 				btnGene.setVisible(false);
 				affichage_type_ano.setText("Vous avez s�l�ctionn� un �venement de type ");
-				
 			}
 		});
 		
@@ -210,39 +201,38 @@ public class InterfaceGenEvent{
 				String type = choix_type_ano.getSelectedItem().toString();
 				String localisation = choix_bat.getSelectedItem().toString();
 				int level = Integer.parseInt(choix_level.getSelectedItem().toString());
-			
-				Anomalie_Ecouteur ecouteur1 = new Anomalie_Ecouteur();
 				
+				
+				Anomalie_Ecouteur ecouteur1 = new Anomalie_Ecouteur();
 				
 				if (type == "Gaz") {
 					String gaz = type_gaz.getText();
 					GazEventSource gaz_source = new GazEventSource(localisation);
 					gaz_source.addListener(ecouteur1);
-					gaz_source.genEvent(level, gaz);
+					liste_ano.ajout_ano(gaz_source.genEvent(level, gaz));
 
 					String i4 = gaz_ano.getText();
 					gaz_ano.setText(i4 + gaz);
-
-					gaz_ano.setVisible(true);
 					
+					gaz_ano.setVisible(true);
 				}
 				else if (type == "Incendie") {
 					IncendieEventSource inc_source = new IncendieEventSource(localisation);
-					inc_source.genEvent(level);
-					
+					inc_source.addListener(ecouteur1);
+					liste_ano.ajout_ano(inc_source.genEvent(level));
 				}
 				else if (type == "Radiation") {
 					int value = Integer.parseInt(niveau_rad.getValue().toString());
 					RadiationEventSource rad_source = new RadiationEventSource(localisation);
 					rad_source.addListener(ecouteur1);
-					rad_source.genEvent(level, value);
+					liste_ano.ajout_ano(rad_source.genEvent(level, value));
 
 					String i4 = rad_ano.getText();
 					rad_ano.setText(i4 + value);
 					
 					rad_ano.setVisible(true);
-				
 				}
+				
 				
 				btnBack.setVisible(false);
 				affichage_type_ano.setVisible(false);
@@ -267,18 +257,7 @@ public class InterfaceGenEvent{
 				
 			}
 		});
-		
-		
-		btn_open_monitor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//when click on button, it opens the "moniteur" window
-			
-				MoniteurInterfaceGraphique moniteurs = new MoniteurInterfaceGraphique();
-				moniteurs.Moniteur();
-				System.out.println("ici" + liste_gaz_event);
-				
-			}
-		});
+
 		
 		
 		

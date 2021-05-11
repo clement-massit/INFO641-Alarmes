@@ -16,13 +16,14 @@ public class IncendieEventSource {
 		this.localisation = localisation;
 	}
 
-	public void genEvent(int level) {
+	public IncendieEvent genEvent(int level) {
 		IncendieEvent inc_1 = new IncendieEvent(this);
 		inc_1.setLocalisation(this.localisation);
 		inc_1.setNiveau(level);
 		for (IncendieEventListener listener : liste_incendie_event) {
 			listener.onEvent(inc_1);
 		}
+		return inc_1;
 	}
 	
 	public void addListener(Anomalie_Ecouteur ecouteur) {

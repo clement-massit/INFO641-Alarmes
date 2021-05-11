@@ -16,7 +16,7 @@ public class RadiationEventSource {
 		this.localisation = localisation;
 	}
 
-	public void genEvent(int level, int niveau_rad) {
+	public RadiationEvent genEvent(int level, int niveau_rad) {
 		RadiationEvent rad_1 = new RadiationEvent(this);
 		rad_1.setLocalisation(this.localisation);
 		rad_1.setNiveau(level);
@@ -24,6 +24,7 @@ public class RadiationEventSource {
 		for (RadiationEventListener listener : liste_rad_event) {
 			listener.onEvent(rad_1);
 		}
+		return rad_1;
 	}
 	
 	public void addListener(Anomalie_Ecouteur ecouteur) {

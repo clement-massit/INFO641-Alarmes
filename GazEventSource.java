@@ -2,8 +2,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class GazEventSource {
-	private Collection<GazEventListener> liste_gaz_event_listener =  new ArrayList<GazEventListener>();
-	private Collection<GazEvent> liste_gaz_event =  new ArrayList<GazEvent>();
+	private Collection<GazEventListener> liste_gaz_event =  new ArrayList<GazEventListener>();
 	public String localisation;
 	
 	public GazEventSource(String localisation) {
@@ -16,23 +15,20 @@ public class GazEventSource {
 	public void setLocalisation(String localisation) {
 		this.localisation = localisation;
 	}
-	
 
-	public void genEvent(int level, String gaz) {
+
+	public GazEvent genEvent(int level, String gaz) {
 		GazEvent gaz_1 = new GazEvent(this);
 		gaz_1.setLocalisation(this.localisation);
 		gaz_1.setNiveau(level);
 		gaz_1.setType_gaz(gaz);
-		
-		for (GazEventListener listener : liste_gaz_event_listener) {
+		for (GazEventListener listener : liste_gaz_event) {
 			listener.onEvent(gaz_1);
 		}
-		liste_gaz_event.add(gaz_1);
-		
-		
+		return gaz_1;
 	}
 	
 	public void addListener(Anomalie_Ecouteur ecouteur) {
-		liste_gaz_event_listener.add(ecouteur);
+		liste_gaz_event.add(ecouteur);
 	}	
 }

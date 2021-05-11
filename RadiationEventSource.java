@@ -16,10 +16,11 @@ public class RadiationEventSource {
 		this.localisation = localisation;
 	}
 
-	public void genEvent(int level) {
+	public void genEvent(int level, int niveau_rad) {
 		RadiationEvent rad_1 = new RadiationEvent(this);
 		rad_1.setLocalisation(this.localisation);
 		rad_1.setNiveau(level);
+		rad_1.setLevel_rad(niveau_rad);
 		for (RadiationEventListener listener : liste_rad_event) {
 			listener.onEvent(rad_1);
 		}

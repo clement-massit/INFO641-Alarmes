@@ -12,7 +12,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import java.awt.Color;
 
-public class Brouillon{
+public class CreateEventInterfaceGraphique{
 
 	private JFrame frame;
 
@@ -23,7 +23,7 @@ public class Brouillon{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Brouillon window = new Brouillon();
+					CreateEventInterfaceGraphique window = new CreateEventInterfaceGraphique();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +35,7 @@ public class Brouillon{
 	/**
 	 * Create the application.
 	 */
-	public Brouillon() {
+	public CreateEventInterfaceGraphique() {
 		initialize();
 	}
 
@@ -53,7 +53,7 @@ public class Brouillon{
 		String[] bat = {"Bâtiment A", "Bâtiment B", "Bâtiment C"};
 		panel.setLayout(null);
 		JComboBox comboBox = new JComboBox(bat);
-		comboBox.setBounds(120, 83, 92, 20);
+		comboBox.setBounds(20, 83, 92, 20);
 		
 		
 		String[] anomalie = {"Gaz", "Incendie", "Radiation"};

@@ -6,11 +6,12 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class InterfaceGraphique extends JFrame, Main{
+public class InterfaceGraphique extends JFrame {
 	private JPanel pan = new JPanel();
 	private JButton bouton = new JButton("Mon bouton");
-
+	private JTextField text = new JTextField();
 	
   public InterfaceGraphique(){
 	  
@@ -19,6 +20,9 @@ public class InterfaceGraphique extends JFrame, Main{
     this.setSize(850, 600);
     this.setLocationRelativeTo(null);  
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+    text.setColumns(10);
+    text.setBounds(20, 83, 92, 20);
+    
     
     String[] bat = {"Bâtiment A", "Bâtiment B", "Bâtiment C"};
 	JComboBox Batiments = new JComboBox(bat);
@@ -36,7 +40,7 @@ public class InterfaceGraphique extends JFrame, Main{
 		}
 	});
 	
-
+	pan.add(text);
 	pan.add(Batiments);
 	pan.add(Anomalie);
 	pan.add(Level);

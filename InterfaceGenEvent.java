@@ -20,11 +20,11 @@ public class InterfaceGenEvent{
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(Liste_anomalie liste_ano) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InterfaceGenEvent window = new InterfaceGenEvent();
+					InterfaceGenEvent window = new InterfaceGenEvent(liste_ano);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,13 +36,13 @@ public class InterfaceGenEvent{
 	/**
 	 * Create the application.
 	 */
-	public InterfaceGenEvent() {
-		initialize();
+	public InterfaceGenEvent(Liste_anomalie liste_ano) {
+		initialize(liste_ano);
 	}
 	/*
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(Liste_anomalie liste_ano) {
 		
 		/*
 		 * Cr�ation des listes pour les JComboBox
@@ -209,7 +209,7 @@ public class InterfaceGenEvent{
 					String gaz = type_gaz.getText();
 					GazEventSource gaz_source = new GazEventSource(localisation);
 					gaz_source.addListener(ecouteur1);
-					gaz_source.genEvent(level, gaz);
+					liste_ano.ajout_ano(gaz_source.genEvent(level, gaz));
 
 					String i4 = gaz_ano.getText();
 					gaz_ano.setText(i4 + gaz);
@@ -218,19 +218,21 @@ public class InterfaceGenEvent{
 				}
 				else if (type == "Incendie") {
 					IncendieEventSource inc_source = new IncendieEventSource(localisation);
-					inc_source.genEvent(level);
+					inc_source.addListener(ecouteur1);
+					liste_ano.ajout_ano(inc_source.genEvent(level));
 				}
 				else if (type == "Radiation") {
 					int value = Integer.parseInt(niveau_rad.getValue().toString());
 					RadiationEventSource rad_source = new RadiationEventSource(localisation);
 					rad_source.addListener(ecouteur1);
-					rad_source.genEvent(level, value);
+					liste_ano.ajout_ano(rad_source.genEvent(level, value));
 
 					String i4 = rad_ano.getText();
 					rad_ano.setText(i4 + value);
 					
 					rad_ano.setVisible(true);
 				}
+				
 				
 				btnBack.setVisible(false);
 				affichage_type_ano.setVisible(false);

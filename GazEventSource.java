@@ -17,7 +17,7 @@ public class GazEventSource {
 	}
 
 
-	public void genEvent(int level, String gaz) {
+	public GazEvent genEvent(int level, String gaz) {
 		GazEvent gaz_1 = new GazEvent(this);
 		gaz_1.setLocalisation(this.localisation);
 		gaz_1.setNiveau(level);
@@ -25,6 +25,7 @@ public class GazEventSource {
 		for (GazEventListener listener : liste_gaz_event) {
 			listener.onEvent(gaz_1);
 		}
+		return gaz_1;
 	}
 	
 	public void addListener(Anomalie_Ecouteur ecouteur) {

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class Anomalie_Ecouteur implements GazEventListener, IncendieEventListener, RadiationEventListener{
 

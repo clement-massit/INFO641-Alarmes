@@ -2,6 +2,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
+import java.awt.Component;
+
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JPanel;
@@ -18,9 +20,8 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class MoniteurInterfaceGraphique extends CreateEventInterfaceGraphique implements GazEventListener, IncendieEventListener, RadiationEventListener{
+public class MoniteurInterfaceGraphique extends InterfaceGenEvent implements GazEventListener, IncendieEventListener, RadiationEventListener{
 	private Collection<AnomalieEvent> liste_event =  new ArrayList<AnomalieEvent>();
-
 	private JFrame frame;
 	private JFrame moniteur;
 	
@@ -32,12 +33,14 @@ public class MoniteurInterfaceGraphique extends CreateEventInterfaceGraphique im
 	public void onEvent(IncendieEvent inc_event) {
 		// TODO Auto-generated method stub
 		liste_event.add(inc_event);
+		
 	}
 
 	@Override
 	public void onEvent(GazEvent gaz_event) {
 		// TODO Auto-generated method stub
 		liste_event.add(gaz_event);
+		System.out.println(gaz_event);
 		
 	}
 	@Override
@@ -48,7 +51,7 @@ public class MoniteurInterfaceGraphique extends CreateEventInterfaceGraphique im
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void Moniteur() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -102,6 +105,7 @@ public class MoniteurInterfaceGraphique extends CreateEventInterfaceGraphique im
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(40, 70, 200, 300);
+		
 		panel.add(panel_1);
 		
 		JButton Afficher_element = new JButton("Afficher la liste");
@@ -127,11 +131,12 @@ public class MoniteurInterfaceGraphique extends CreateEventInterfaceGraphique im
 					.addComponent(folder_1, GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
 		);
 		panel_1.setLayout(gl_panel_1);
+		panel_1.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(500, 70, 200, 300);
 		panel.add(panel_2);
-		
+		panel_2.setAlignmentX(Component.CENTER_ALIGNMENT);
 		JButton Afficher_element_1 = new JButton("Afficher la liste");
 		
 		JTabbedPane folder_2 = new JTabbedPane(JTabbedPane.BOTTOM);
@@ -157,6 +162,7 @@ public class MoniteurInterfaceGraphique extends CreateEventInterfaceGraphique im
 		Afficher_element.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				folder_1.setVisible(true);
+				
 				showMoniteurA();
 			}
 		});
@@ -198,11 +204,9 @@ public class MoniteurInterfaceGraphique extends CreateEventInterfaceGraphique im
 		MoniteurA.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		moniteurA_panel.add(MoniteurA);
 		
-		System.out.println(liste_event);
-		for (AnomalieEvent event1 : liste_event) {
-			JLabel event = new JLabel(event1.toString());
-			
-		}
+		
+		
+		
 		
 
 	}

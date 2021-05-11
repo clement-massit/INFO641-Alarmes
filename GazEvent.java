@@ -22,7 +22,7 @@ public class GazEvent extends AnomalieEvent{
 
 	@Override
 	public String toString() {
-		return "GazEvent [type_gaz=" + type_gaz + ", type_anomalie=" + type_anomalie + ", getDate_apparition()="
+		return "GazEvent [yo les bg type_gaz=" + type_gaz + ", type_anomalie=" + type_anomalie + ", getDate_apparition()="
 				+ getDate_apparition() + ", getLocalisation()=" + getLocalisation() + ", getNiveau()=" + getNiveau()
 				+ ", getFormat()=" + getFormat() + ", getSource()=" + getSource() + ", toString()=" + super.toString()
 				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";

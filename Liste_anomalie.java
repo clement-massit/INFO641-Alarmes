@@ -40,8 +40,10 @@ public class Liste_anomalie {
 	}
 	@Override
 	public String toString() {
-		return "Liste_anomalie [liste_ano_1=" + liste_ano_1 + ", liste_ano_2=" + liste_ano_2 + ", liste_ano_3="
-				+ liste_ano_3 + "]";
+		return  "" + liste_ano_1;
+				
+				//*+ "\n liste_ano_2=" + liste_ano_2 + "\n liste_ano_3="
+				//+ liste_ano_3 + "]";*/
 	}
 	
 }

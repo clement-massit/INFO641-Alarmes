@@ -105,6 +105,11 @@ public class InterfaceGenEvent{
 		panel.add(btnGene);
 		btnGene.setVisible(false);
 		
+		JButton open_monitors = new JButton("Ouvrir moniteurs");
+		open_monitors.setBounds(185, 200, 104, 21);
+		panel.add(open_monitors);
+		open_monitors.setVisible(true);
+		
 		type_gaz = new JTextField();
 		type_gaz.setToolTipText("");
 		type_gaz.setBounds(185, 106, 96, 20);
@@ -149,6 +154,8 @@ public class InterfaceGenEvent{
 		JLabel rad_ano = new JLabel("- Niveau de radiation : ");
 		rad_ano.setBounds(109, 156, 258, 14);
 		panel.add(rad_ano);
+		
+		
 		rad_ano.setVisible(false);
 		
 		
@@ -258,7 +265,14 @@ public class InterfaceGenEvent{
 			}
 		});
 
+		open_monitors.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//open monitor window
+				MoniteurInterfaceGraphique.Moniteur(liste_ano);
 		
+				
+			}
+		});
 		
 		
 		

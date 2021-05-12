@@ -13,21 +13,21 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.swing.JButton;
-import javax.swing.JTabbedPane;
-import java.awt.FlowLayout;
-import java.awt.Window.Type;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Color;
+import javax.swing.JTextArea;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
-public class MoniteurInterfaceGraphique extends InterfaceGenEvent implements GazEventListener, IncendieEventListener, RadiationEventListener{
+
+public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEventListener, RadiationEventListener{
 	private Collection<AnomalieEvent> liste_event =  new ArrayList<AnomalieEvent>();
 	private JFrame frame;
-	private JFrame moniteur;
-	
-	public void display_moniteur() {
-		System.out.println(liste_event);
-	}
+
 
 	@Override
 	public void onEvent(IncendieEvent inc_event) {
@@ -51,11 +51,12 @@ public class MoniteurInterfaceGraphique extends InterfaceGenEvent implements Gaz
 	/**
 	 * Launch the application.
 	 */
-	public static void Moniteur() {
+	public static void Moniteur(Liste_anomalie liste_ano) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				
 				try {
-					MoniteurInterfaceGraphique window = new MoniteurInterfaceGraphique();
+					MoniteurInterfaceGraphique window = new MoniteurInterfaceGraphique(liste_ano);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -67,174 +68,105 @@ public class MoniteurInterfaceGraphique extends InterfaceGenEvent implements Gaz
 	/**
 	 * Create the application.
 	 */
-	public MoniteurInterfaceGraphique() {
-		initialize();
+	public MoniteurInterfaceGraphique(Liste_anomalie liste_ano) {
+		initialize(liste_ano);
 		
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(Liste_anomalie liste_ano) {
 		frame = new JFrame();
 		frame.setAlwaysOnTop(true);
-		frame.setBounds(100, 100, 750, 300);
+		frame.setBounds(100, 100, 750, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		JLabel lblNewLabel = new JLabel("Gestion des moniteurs");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		frame.getContentPane().add(lblNewLabel, BorderLayout.NORTH);
 		
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("Moniteur A");
-		lblNewLabel_1.setBounds(10, 37, 261, 22);
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		panel.add(lblNewLabel_1);
+		JPanel panelA = new JPanel();
+		panelA.setBounds(20, 70, 200, 300);
+		
+		JPanel panelB = new JPanel();
+		panelB.setBounds(500, 70, 200, 300);
+		
+		JLabel gestion_moniteur = new JLabel("Gestion des moniteurs");
+		gestion_moniteur.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		gestion_moniteur.setHorizontalAlignment(SwingConstants.CENTER);
+		frame.getContentPane().add(gestion_moniteur, BorderLayout.NORTH);
+		
+		JLabel moniteurA = new JLabel("Moniteur A");
+		moniteurA.setBounds(10, 37, 261, 22);
+		moniteurA.setHorizontalAlignment(SwingConstants.CENTER);
+		moniteurA.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		
+		JLabel moniteurB = new JLabel("Moniteur B");
+		moniteurB.setBounds(476, 38, 250, 22);
+		moniteurB.setHorizontalAlignment(SwingConstants.CENTER);
+		moniteurB.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		
+		JPanel menaceA_1 = new JPanel();
+		menaceA_1.setBackground(Color.CYAN);
+		menaceA_1.setBounds(10, 45, 180, 105);
+		panelA.add(menaceA_1);
+		menaceA_1.setLayout(null);
 		
 		
-		JLabel lblNewLabel_2 = new JLabel("Moniteur B");
-		lblNewLabel_2.setBounds(476, 38, 250, 22);
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		panel.add(lblNewLabel_2);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(40, 70, 200, 300);
+		panel.add(moniteurA);
+		panel.add(moniteurB);
+		panel.add(panelA);
+		panel.add(panelB);
 		
-		panel.add(panel_1);
+		JTextArea ano_text = new JTextArea();
+		ano_text.setBounds(10, 10, 160, 85);
+		ano_text.setText(liste_ano.toString());
+		menaceA_1.add(ano_text);
+		ano_text.setVisible(false);
 		
-		JButton Afficher_element = new JButton("Afficher la liste");
-		
-		JTabbedPane folder_1 = new JTabbedPane(JTabbedPane.TOP);
-		
-		
-		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
-		gl_panel_1.setHorizontalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_1.createSequentialGroup()
-					.addGap(44)
-					.addComponent(Afficher_element)
-					.addContainerGap(55, Short.MAX_VALUE))
-				.addComponent(folder_1, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-		);
-		gl_panel_1.setVerticalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_1.createSequentialGroup()
-					.addGap(5)
-					.addComponent(Afficher_element)
-					.addGap(39)
-					.addComponent(folder_1, GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
-		);
-		panel_1.setLayout(gl_panel_1);
-		panel_1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(500, 70, 200, 300);
-		panel.add(panel_2);
-		panel_2.setAlignmentX(Component.CENTER_ALIGNMENT);
-		JButton Afficher_element_1 = new JButton("Afficher la liste");
-		
-		JTabbedPane folder_2 = new JTabbedPane(JTabbedPane.BOTTOM);
-		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(
-			gl_panel_2.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel_2.createSequentialGroup()
-					.addContainerGap(56, Short.MAX_VALUE)
-					.addComponent(Afficher_element_1)
-					.addGap(43))
-				.addComponent(folder_2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-		);
-		gl_panel_2.setVerticalGroup(
-			gl_panel_2.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_panel_2.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(Afficher_element_1)
-					.addGap(33)
-					.addComponent(folder_2, GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
-		);
-		
-		folder_1.setVisible(false);
-		Afficher_element.addActionListener(new ActionListener() {
+		JButton Afficher_elementB = new JButton("Afficher la liste");
+		Afficher_elementB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				folder_1.setVisible(true);
 				
-				showMoniteurA();
 			}
 		});
 		
 		
-		panel_2.setLayout(gl_panel_2);
-		folder_2.setVisible(false);
-		Afficher_element_1.addActionListener(new ActionListener() {
+		JButton Afficher_elementA = new JButton("Afficher la liste");
+		Afficher_elementA.setBounds(49, 0, 101, 21);
+		Afficher_elementA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				folder_2.setVisible(true);
-				showMoniteurB();
-				 
+				ano_text.setVisible(true);
+				
+				
 			}
 		});
-		
-		
-	
-		
-		
-	}
-	
-	
-	private void showMoniteurA() {
-		//frame.dispose();
-		JFrame moniteurA = new JFrame();
-	    //moniteurA.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    moniteurA.setSize(600,400);
-	    moniteurA.setLocationRelativeTo( null );
-	    moniteurA.setVisible( true );
-	    
-
-		JPanel moniteurA_panel = new JPanel();
-		moniteurA.getContentPane().add(moniteurA_panel, BorderLayout.CENTER);
-		moniteurA_panel.setLayout(null);
-	    
-		JLabel MoniteurA = new JLabel("Moniteur A");
-		MoniteurA.setBounds(10, 37, 261, 22);
-		MoniteurA.setHorizontalAlignment(SwingConstants.CENTER);
-		MoniteurA.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		moniteurA_panel.add(MoniteurA);
-		
+		panelA.setLayout(null);
+		panelA.add(Afficher_elementA);
 		
 		
 		
 		
 
-	}
-	private void showMoniteurB() {
-		JFrame moniteurB;
-		//frame.dispose();
-		moniteurB = new JFrame();;
-		//moniteurB.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    moniteurB.setSize(600,400);
-	    moniteurB.setLocationRelativeTo( null );
-	    moniteurB.setVisible( true );  
-	    
-	    JPanel moniteurB_panel = new JPanel();
-		moniteurB.getContentPane().add(moniteurB_panel, BorderLayout.CENTER);
-		moniteurB_panel.setLayout(null);
-	    
-		JLabel MoniteurB = new JLabel("Moniteur B");
-		MoniteurB.setBounds(10, 37, 261, 22);
-		MoniteurB.setHorizontalAlignment(SwingConstants.CENTER);
-		MoniteurB.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		moniteurB_panel.add(MoniteurB);
+		GroupLayout gl_panelB = new GroupLayout(panelB);
+		gl_panelB.setHorizontalGroup(
+			gl_panelB.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panelB.createSequentialGroup()
+					.addContainerGap(56, Short.MAX_VALUE)
+					.addComponent(Afficher_elementB)
+					.addGap(43))
+		);
+		gl_panelB.setVerticalGroup(
+			gl_panelB.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelB.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(Afficher_elementB)
+					.addContainerGap(269, Short.MAX_VALUE))
+		);
+		panelB.setLayout(gl_panelB);
 		
-		System.out.println(liste_event);
-		for (AnomalieEvent event1 : liste_event) {
-			JLabel event = new JLabel(event1.toString());
-			
-		}
-	    
 
 	}
 }

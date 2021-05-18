@@ -146,13 +146,6 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		ano3_text.setText(liste_ano.toString());
 		menaceA_3.add(ano3_text);
 		ano3_text.setVisible(false);
-		
-		JButton Afficher_elementB = new JButton("Afficher la liste");
-		Afficher_elementB.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
 		panelA.setLayout(null);
 		menaceA_2.setBackground(Color.ORANGE);
 		menaceA_2.setBounds(10, 176, 320, 135);
@@ -164,44 +157,17 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		panelA.add(menaceA_3);
 		
 		
-		JButton Afficher_elementA = new JButton("Afficher la liste");
-		Afficher_elementA.setBounds(115, 0, 101, 21);
-		panelA.add(Afficher_elementA);
-		Afficher_elementA.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println(liste_ano);
-				if (liste_ano.getListe_ano_A2().isEmpty() && liste_ano.getListe_ano_A3().isEmpty()) {
-					ano1_text.setVisible(true);
-				}
-				if (liste_ano.getListe_ano_A1().isEmpty() && liste_ano.getListe_ano_A3().isEmpty()) {
-					ano2_text.setVisible(true);
-				}
-				if (liste_ano.getListe_ano_A1().isEmpty() && liste_ano.getListe_ano_A2().isEmpty()) {
-					ano3_text.setVisible(true);
-				}
-				
-				
-				
-			}
-		});
-		
-		
 		
 		
 
 		GroupLayout gl_panelB = new GroupLayout(panelB);
 		gl_panelB.setHorizontalGroup(
 			gl_panelB.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panelB.createSequentialGroup()
-					.addContainerGap(127, Short.MAX_VALUE)
-					.addComponent(Afficher_elementB)
-					.addGap(122))
+				.addGap(0, 350, Short.MAX_VALUE)
 		);
 		gl_panelB.setVerticalGroup(
 			gl_panelB.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelB.createSequentialGroup()
-					.addComponent(Afficher_elementB)
-					.addContainerGap(437, Short.MAX_VALUE))
+				.addGap(0, 458, Short.MAX_VALUE)
 		);
 		panelB.setLayout(gl_panelB);
 		

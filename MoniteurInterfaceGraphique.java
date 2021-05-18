@@ -91,8 +91,9 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 	 */
 	private void initialize(Liste_anomalie liste_ano) {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setAlwaysOnTop(true);
-		frame.setBounds(100, 100, 800, 600);
+		frame.setBounds(600, 100, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -142,7 +143,7 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		
 		ano1_text.setBackground(Color.YELLOW);
 		ano1_text.setBounds(10, 10, 300, 115);
-		ano1_text.setText(liste_ano.getListe_ano_A1());
+		//ano1_text.setText(liste_ano.getListe_ano_A1());
 		menaceA_1.add(ano1_text);
 		ano1_text.setVisible(false);
 		menaceA_2.setLayout(null);
@@ -200,13 +201,5 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 
 	}
 	
-	public static void afficher_liste(Liste_anomalie liste_ano) {
-		Collection<AnomalieEvent> lA1 =  new ArrayList<AnomalieEvent>();
-		lA1 = liste_ano.getListe_ano_A1();
-		
-		for (AnomalieEvent ano : lA1) {
-			String txt = 
-			
-		}
-	}
+	
 }

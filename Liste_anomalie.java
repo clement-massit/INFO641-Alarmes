@@ -15,46 +15,46 @@ public class Liste_anomalie {
 		String type = ano.get_type_anomalie();
 		
 		if(level==1) {
-			if (type == 'Gaz'){
+			if (type == "Gaz"){
 				liste_ano_A1.add(ano);
 				liste_ano_B1.add(ano);
 			}
-			else if (type == 'Incendie'){
+			else if (type == "Incendie"){
 				liste_ano_A1.add(ano);	
 			}
-			else if (type == 'Radiation'){
+			else if (type == "Radiation"){
 				liste_ano_B1.add(ano);	
 			}
 		}
 		else if(level==2) {
-			if (type == 'Gaz'){
+			if (type == "Gaz"){
 				liste_ano_A2.add(ano);
 				liste_ano_B2.add(ano);
 			}
-			else if (type == 'Incendie'){
+			else if (type == "Incendie"){
 				liste_ano_A2.add(ano);	
 			}
-			else if (type == 'Radiation'){
+			else if (type == "Radiation"){
 				liste_ano_B2.add(ano);	
 			}
 		}
 		else if(level==3) {
-			if (type == 'Gaz'){
+			if (type == "Gaz"){
 				liste_ano_A3.add(ano);
 				liste_ano_B3.add(ano);
 			}
-			else if (type == 'Incendie'){
+			else if (type == "Incendie"){
 				liste_ano_A3.add(ano);	
 			}
-			else if (type == 'Radiation'){
+			else if (type == "Radiation"){
 				liste_ano_B3.add(ano);	
 			}
 		}
 	}
 
 
-	public Collection<AnomalieEvent> getListe_ano_A1() {
-		return liste_ano_A1;
+	public String getListe_ano_A1() {
+		return liste_ano_A1.toString();
 	}
 	public void setListe_ano_A1(Collection<AnomalieEvent> liste_ano_A1) {
 		this.liste_ano_A1 = liste_ano_A1;

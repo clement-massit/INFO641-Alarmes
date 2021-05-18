@@ -173,6 +173,9 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		listB3.setBackground(Color.RED);
 		menaceB_3.add(listB3);
 		
+		panelA.setLayout(null);
+		panelB.setLayout(null);
+		
 
 	}
 	

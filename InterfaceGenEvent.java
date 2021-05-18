@@ -262,7 +262,6 @@ public class InterfaceGenEvent{
 				level_ano.setVisible(true);
 				
 				//Création + ouverture de l'interfaces des moniteurs
-				moniteur.afficher_liste(liste_ano);
 				moniteur.Moniteur(liste_ano);
 			}
 		});

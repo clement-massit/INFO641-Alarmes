@@ -19,6 +19,8 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Color;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -27,6 +29,8 @@ import java.awt.Insets;
 public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEventListener, RadiationEventListener{
 	private Collection<AnomalieEvent> liste_event =  new ArrayList<AnomalieEvent>();
 	private JFrame frame;
+	private final JPanel menaceA_2 = new JPanel();
+	private final JPanel menaceA_3 = new JPanel();
 
 
 	@Override
@@ -79,7 +83,7 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 	private void initialize(Liste_anomalie liste_ano) {
 		frame = new JFrame();
 		frame.setAlwaysOnTop(true);
-		frame.setBounds(100, 100, 750, 500);
+		frame.setBounds(100, 100, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -87,10 +91,10 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		panel.setLayout(null);
 		
 		JPanel panelA = new JPanel();
-		panelA.setBounds(20, 70, 200, 300);
+		panelA.setBounds(20, 70, 340, 458);
 		
 		JPanel panelB = new JPanel();
-		panelB.setBounds(500, 70, 200, 300);
+		panelB.setBounds(426, 70, 350, 458);
 		
 		JLabel gestion_moniteur = new JLabel("Gestion des moniteurs");
 		gestion_moniteur.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -98,18 +102,18 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		frame.getContentPane().add(gestion_moniteur, BorderLayout.NORTH);
 		
 		JLabel moniteurA = new JLabel("Moniteur A");
-		moniteurA.setBounds(10, 37, 261, 22);
+		moniteurA.setBounds(10, 37, 350, 22);
 		moniteurA.setHorizontalAlignment(SwingConstants.CENTER);
 		moniteurA.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		
 		JLabel moniteurB = new JLabel("Moniteur B");
-		moniteurB.setBounds(476, 38, 250, 22);
+		moniteurB.setBounds(426, 37, 350, 22);
 		moniteurB.setHorizontalAlignment(SwingConstants.CENTER);
 		moniteurB.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		
 		JPanel menaceA_1 = new JPanel();
-		menaceA_1.setBackground(Color.CYAN);
-		menaceA_1.setBounds(10, 45, 180, 105);
+		menaceA_1.setBackground(Color.YELLOW);
+		menaceA_1.setBounds(10, 31, 320, 135);
 		panelA.add(menaceA_1);
 		menaceA_1.setLayout(null);
 		
@@ -120,11 +124,28 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		panel.add(panelA);
 		panel.add(panelB);
 		
-		JTextArea ano_text = new JTextArea();
-		ano_text.setBounds(10, 10, 160, 85);
-		ano_text.setText(liste_ano.toString());
-		menaceA_1.add(ano_text);
-		ano_text.setVisible(false);
+		/*
+		 * texte pour l'affichage des events
+		 */
+		JTextField ano1_text = new JTextField();
+		ano1_text.setBounds(10, 10, 300, 115);
+		ano1_text.setText(liste_ano.getListe_ano_A1());
+		menaceA_1.add(ano1_text);
+		ano1_text.setVisible(false);
+		menaceA_2.setLayout(null);
+		
+		JTextArea ano2_text = new JTextArea();
+		ano2_text.setBounds(10, 10, 300, 115);
+		ano2_text.setText(liste_ano.toString());
+		menaceA_2.add(ano2_text);
+		ano2_text.setVisible(false);
+		menaceA_3.setLayout(null);
+		
+		JTextArea ano3_text = new JTextArea();
+		ano3_text.setBounds(10, 10, 300, 115);
+		ano3_text.setText(liste_ano.toString());
+		menaceA_3.add(ano3_text);
+		ano3_text.setVisible(false);
 		
 		JButton Afficher_elementB = new JButton("Afficher la liste");
 		Afficher_elementB.addActionListener(new ActionListener() {
@@ -132,19 +153,37 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 				
 			}
 		});
+		panelA.setLayout(null);
+		menaceA_2.setBackground(Color.ORANGE);
+		menaceA_2.setBounds(10, 176, 320, 135);
+		
+		panelA.add(menaceA_2);
+		menaceA_3.setBackground(Color.RED);
+		menaceA_3.setBounds(10, 323, 320, 135);
+		
+		panelA.add(menaceA_3);
 		
 		
 		JButton Afficher_elementA = new JButton("Afficher la liste");
-		Afficher_elementA.setBounds(49, 0, 101, 21);
+		Afficher_elementA.setBounds(115, 0, 101, 21);
+		panelA.add(Afficher_elementA);
 		Afficher_elementA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ano_text.setVisible(true);
+				System.out.println(liste_ano);
+				if (liste_ano.getListe_ano_A2().isEmpty() && liste_ano.getListe_ano_A3().isEmpty()) {
+					ano1_text.setVisible(true);
+				}
+				if (liste_ano.getListe_ano_A1().isEmpty() && liste_ano.getListe_ano_A3().isEmpty()) {
+					ano2_text.setVisible(true);
+				}
+				if (liste_ano.getListe_ano_A1().isEmpty() && liste_ano.getListe_ano_A2().isEmpty()) {
+					ano3_text.setVisible(true);
+				}
+				
 				
 				
 			}
 		});
-		panelA.setLayout(null);
-		panelA.add(Afficher_elementA);
 		
 		
 		
@@ -154,16 +193,15 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		gl_panelB.setHorizontalGroup(
 			gl_panelB.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panelB.createSequentialGroup()
-					.addContainerGap(56, Short.MAX_VALUE)
+					.addContainerGap(127, Short.MAX_VALUE)
 					.addComponent(Afficher_elementB)
-					.addGap(43))
+					.addGap(122))
 		);
 		gl_panelB.setVerticalGroup(
 			gl_panelB.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelB.createSequentialGroup()
-					.addContainerGap()
 					.addComponent(Afficher_elementB)
-					.addContainerGap(269, Short.MAX_VALUE))
+					.addContainerGap(437, Short.MAX_VALUE))
 		);
 		panelB.setLayout(gl_panelB);
 		

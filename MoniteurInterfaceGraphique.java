@@ -1,18 +1,27 @@
 import java.awt.EventQueue;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 
 import javax.swing.SwingConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseMotionListener;
+
 import javax.swing.JPanel;
 import java.util.ArrayList;
 import java.util.Collection;
-
+import java.util.List;
 import java.awt.Color;
 import javax.swing.JTextArea;
+import javax.swing.ListSelectionModel;
 import javax.swing.JList;
 
 
@@ -76,7 +85,7 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setAlwaysOnTop(true);
-		frame.setBounds(600, 100, 800, 600);
+		frame.setBounds(600, 100, 800, 670);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -84,10 +93,10 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		panel.setLayout(null);
 		
 		JPanel panelA = new JPanel();
-		panelA.setBounds(20, 70, 340, 458);
+		panelA.setBounds(20, 70, 340, 535);
 		
 		JPanel panelB = new JPanel();
-		panelB.setBounds(426, 70, 340, 458);
+		panelB.setBounds(426, 70, 340, 535);
 		
 		JLabel gestion_moniteur = new JLabel("Gestion des moniteurs");
 		gestion_moniteur.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -119,24 +128,24 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		
 		
 		menaceA_1.setBackground(Color.YELLOW);
-		menaceA_1.setBounds(10, 31, 320, 135);
+		menaceA_1.setBounds(10, 41, 320, 135);
 		
 
 
 		menaceA_2.setBackground(Color.ORANGE);
-		menaceA_2.setBounds(10, 176, 320, 135);
+		menaceA_2.setBounds(10, 217, 320, 135);
 		
 		menaceA_3.setBackground(Color.RED);
-		menaceA_3.setBounds(10, 323, 320, 135);
+		menaceA_3.setBounds(10, 393, 320, 135);
 		
 		menaceB_1.setBackground(Color.YELLOW);
-		menaceB_1.setBounds(10, 31, 320, 135);
+		menaceB_1.setBounds(10, 41, 320, 135);
 		
 		menaceB_2.setBackground(Color.ORANGE);
-		menaceB_2.setBounds(10, 176, 320, 135);
+		menaceB_2.setBounds(10, 217, 320, 135);
 		
 		menaceB_3.setBackground(Color.RED);
-		menaceB_3.setBounds(10, 323, 320, 135);
+		menaceB_3.setBounds(10, 393, 320, 135);
 		
 		
 		panelA.add(menaceA_1);
@@ -176,12 +185,129 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		panelA.setLayout(null);
 		panelB.setLayout(null);
 		
+		
+		
+		////////////////////	BOUTONS TRAITER		/////////////////////////////////
+		JButton btn_traiter_A1 = new JButton("Traiter");
+		btn_traiter_A1.setBounds(245, 20, 85, 21);
+		panelA.add(btn_traiter_A1);
+		
+		JButton btn_traiter_A2 = new JButton("Traiter");
+		btn_traiter_A2.setBounds(245, 196, 85, 21);
+		panelA.add(btn_traiter_A2);
+		
+		JButton btn_traiter_A3 = new JButton("Traiter");
+		btn_traiter_A3.setBounds(245, 372, 85, 21);
+		panelA.add(btn_traiter_A3);
+		
+		JButton btn_traiter_B1 = new JButton("Traiter");
+		btn_traiter_B1.setBounds(245, 20, 85, 21);
+		panelB.add(btn_traiter_B1);
+						
+		JButton btn_traiter_B2 = new JButton("Traiter");
+		btn_traiter_B2.setBounds(245, 196, 85, 21);
+		panelB.add(btn_traiter_B2);
+				
+		JButton btn_traiter_B3 = new JButton("Traiter");
+		btn_traiter_B3.setBounds(245, 372, 85, 21);
+		panelB.add(btn_traiter_B3);
+
+		////////////////////	FRAME & LABEL INFORMATIONS POUR LES ERREURS		/////////////////////////////////
+		JFrame infos = new JFrame("INFORMATIONS");
+		JLabel informations = new JLabel("Vous avez déjà supprimé l'anomalie sur ce moniteur");
+		informations.setFont(new Font("Tahoma", Font.ITALIC, 14));
+		informations.setForeground(Color.RED);
+		informations.setHorizontalAlignment(SwingConstants.CENTER);
+		infos.getContentPane().add(informations, BorderLayout.CENTER);
+		
+		infos.setResizable(false);
+		infos.setAlwaysOnTop(true);
+		infos.setLocationRelativeTo(null);
+		infos.setSize(500, 100);;
+		infos.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		////////////////////	ACTION PERFORMED SUR LES BOUTONS TRAITER 	/////////////////////////////////
+		btn_traiter_A1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					lA1.remove(0);
+					infos.dispose();
+					
+				} catch (Exception e2) {
+					infos.setVisible(true);
+					
+				}				
+			}
+		});
+		
+		btn_traiter_A2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					lA2.remove(0);
+					infos.dispose();
+					
+				} catch (Exception e2) {
+					infos.setVisible(true);
+					
+				}
+			}
+		});
+		
+		btn_traiter_A3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					lA3.remove(0);
+					infos.dispose();
+					
+				} catch (Exception e2) {
+					infos.setVisible(true);
+					
+				}
+			}
+		});
+		
+		btn_traiter_B1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					lB1.remove(0);
+					infos.dispose();
+					
+				} catch (Exception e2) {
+					infos.setVisible(true);
+					
+				}
+			}
+		});
+		
+		btn_traiter_B2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					lB2.remove(0);
+					infos.dispose();
+					
+				} catch (Exception e2) {
+					infos.setVisible(true);
+					
+				}
+			}
+		});
+		
+		btn_traiter_B3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					lB3.remove(0);
+					infos.dispose();
+					
+				} catch (Exception e2) {
+					infos.setVisible(true);
+					
+				}
+			}
+		});
+		
+		
+		
+		
 
 	}
-	
-	
-
 }
-
-
-//JList

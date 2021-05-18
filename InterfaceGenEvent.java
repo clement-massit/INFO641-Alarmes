@@ -319,11 +319,6 @@ public class InterfaceGenEvent{
 						type_gaz.setVisible(false);
 						btnGene.setVisible(false);
 						btn_retour.setVisible(false);
-						
-						
-						
-						
-						
 					}
 				});
 				

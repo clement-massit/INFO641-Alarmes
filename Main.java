@@ -7,7 +7,7 @@ public class Main{
 		InterfaceGenEvent fenetre = new InterfaceGenEvent(liste_ano);
 		fenetre.main(liste_ano);
 
-		System.out.println(liste_ano.getListe_ano_A2());
+		
 
 		
 	

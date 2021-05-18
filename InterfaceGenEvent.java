@@ -48,7 +48,7 @@ public class InterfaceGenEvent{
 		 * Crï¿½ation des listes pour les JComboBox
 		 */
 		
-		String[] bat = {"BÃ¢timent A", "BÃ¢timent B", "BÃ¢timent C"};
+		String[] bat = {"Bâtiment A", "Bâtiment B", "Bâtiment C"};
 		String[] anomalie = {"Gaz", "Incendie", "Radiation"};
 		String[] level = {"1", "2", "3"};
 		
@@ -105,10 +105,6 @@ public class InterfaceGenEvent{
 		panel.add(btnGene);
 		btnGene.setVisible(false);
 		
-		JButton open_monitors = new JButton("Ouvrir moniteurs");
-		open_monitors.setBounds(185, 200, 104, 21);
-		panel.add(open_monitors);
-		open_monitors.setVisible(true);
 		
 		type_gaz = new JTextField();
 		type_gaz.setToolTipText("");
@@ -238,6 +234,7 @@ public class InterfaceGenEvent{
 					rad_ano.setText(i4 + value);
 					
 					rad_ano.setVisible(true);
+					
 				}
 				
 				
@@ -262,20 +259,10 @@ public class InterfaceGenEvent{
 				lieu_ano.setVisible(true);
 				level_ano.setVisible(true);
 				
-			}
-		});
-
-		open_monitors.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//open monitor window
+				//Création + ouverture de l'interfaces des moniteurs
 				MoniteurInterfaceGraphique.Moniteur(liste_ano);
-		
-				
 			}
 		});
-		
-		
-		
 		
 	}
 }

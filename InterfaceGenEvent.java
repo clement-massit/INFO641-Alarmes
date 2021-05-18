@@ -328,8 +328,7 @@ public class InterfaceGenEvent{
 				});
 				
 
-				//Création + ouverture de l'interfaces des moniteurs
-				moniteur.Moniteur(liste_ano); 
+				
 			}
 		});
 		

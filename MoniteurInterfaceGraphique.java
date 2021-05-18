@@ -1,41 +1,24 @@
 import java.awt.EventQueue;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
-import java.awt.Component;
 
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JPanel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.swing.JButton;
-
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Color;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
-
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
+import javax.swing.JList;
 
 
 public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEventListener, RadiationEventListener{
 	private Collection<AnomalieEvent> liste_event =  new ArrayList<AnomalieEvent>();
 	private JFrame frame;
-	private final JPanel menaceA_1 = new JPanel();
-	private final JPanel menaceA_2 = new JPanel();
-	private final JPanel menaceA_3 = new JPanel();
-	
-	private static JTextField ano1_text = new JTextField();
-	private static JTextField ano2_text = new JTextField();
-	private static JTextField ano3_text = new JTextField();
 	
 	
 
@@ -111,6 +94,14 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		gestion_moniteur.setHorizontalAlignment(SwingConstants.CENTER);
 		frame.getContentPane().add(gestion_moniteur, BorderLayout.NORTH);
 		
+		JPanel menaceA_1 = new JPanel();
+		JPanel menaceA_2 = new JPanel();
+		JPanel menaceA_3 = new JPanel();
+		JPanel menaceB_1 = new JPanel();
+		JPanel menaceB_2 = new JPanel();
+		JPanel menaceB_3 = new JPanel();
+		
+		
 		JLabel moniteurA = new JLabel("Moniteur A");
 		moniteurA.setBounds(10, 37, 350, 22);
 		moniteurA.setHorizontalAlignment(SwingConstants.CENTER);
@@ -121,85 +112,73 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		moniteurB.setHorizontalAlignment(SwingConstants.CENTER);
 		moniteurB.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		
-		
-		menaceA_1.setBackground(Color.YELLOW);
-		menaceA_1.setBounds(10, 31, 320, 135);
-		panelA.add(menaceA_1);
-		menaceA_1.setLayout(null);
-		
-		
-		
 		panel.add(moniteurA);
 		panel.add(moniteurB);
 		panel.add(panelA);
 		panel.add(panelB);
 		
 		
+		menaceA_1.setBackground(Color.YELLOW);
+		menaceA_1.setBounds(10, 31, 320, 135);
 		
-		
-		/*
-		 * texte pour l'affichage des events
-		 */
-		
-		ano1_text.setBackground(Color.YELLOW);
-		ano1_text.setBounds(10, 10, 300, 115);
-		//ano1_text.setText(liste_ano.getListe_ano_A1());
-		menaceA_1.add(ano1_text);
-		ano1_text.setVisible(false);
-		menaceA_2.setLayout(null);
-		
-		
-		ano2_text.setBackground(Color.ORANGE);
-		ano2_text.setBounds(10, 10, 300, 115);
-		ano2_text.setText(liste_ano.toString());
-		menaceA_2.add(ano2_text);
-		ano2_text.setVisible(false);
-		menaceA_3.setLayout(null);
-		
-		
-		ano3_text.setBackground(Color.RED);
-		ano3_text.setBounds(10, 10, 300, 115);
-		ano3_text.setText(liste_ano.toString());
-		menaceA_3.add(ano3_text);
-		ano3_text.setVisible(false);
-		panelA.setLayout(null);
+
+
 		menaceA_2.setBackground(Color.ORANGE);
 		menaceA_2.setBounds(10, 176, 320, 135);
 		
-		panelA.add(menaceA_2);
 		menaceA_3.setBackground(Color.RED);
 		menaceA_3.setBounds(10, 323, 320, 135);
 		
-		panelA.add(menaceA_3);
-		panelB.setLayout(null);
-		
-		
-		JPanel menaceB_1 = new JPanel();
 		menaceB_1.setBackground(Color.YELLOW);
 		menaceB_1.setBounds(10, 31, 320, 135);
-		panelB.add(menaceB_1);
-		menaceB_1.setLayout(null);
 		
-		JPanel menaceB_2 = new JPanel();
 		menaceB_2.setBackground(Color.ORANGE);
 		menaceB_2.setBounds(10, 176, 320, 135);
-		panelB.add(menaceB_2);
-		menaceB_2.setLayout(null);
 		
-		JPanel menaceB_3 = new JPanel();
 		menaceB_3.setBackground(Color.RED);
 		menaceB_3.setBounds(10, 323, 320, 135);
+		
+		
+		panelA.add(menaceA_1);
+		panelA.add(menaceA_2);
+		panelA.add(menaceA_3);
+		panelB.add(menaceB_1);
+		panelB.add(menaceB_2);
 		panelB.add(menaceB_3);
-		menaceB_3.setLayout(null);
 		
 		
+		DefaultListModel lA1 = liste_ano.getListe_txt_ano_A1();
+		DefaultListModel lA2 = liste_ano.getListe_txt_ano_A2();
+		DefaultListModel lA3 = liste_ano.getListe_txt_ano_A3();
+		DefaultListModel lB1 = liste_ano.getListe_txt_ano_B1();
+		DefaultListModel lB2 = liste_ano.getListe_txt_ano_B2();
+		DefaultListModel lB3 = liste_ano.getListe_txt_ano_B3();
 		
-		
-		
-		
+		JList listA1 = new JList(lA1);
+		listA1.setBackground(Color.YELLOW);
+		menaceA_1.add(listA1);
+		JList listA2 = new JList(lA2);
+		listA2.setBackground(Color.ORANGE);
+		menaceA_2.add(listA2);
+		JList listA3 = new JList(lA3);
+		listA3.setBackground(Color.RED);
+		menaceA_3.add(listA3);
+		JList listB1 = new JList(lB1);
+		listB1.setBackground(Color.YELLOW);
+		menaceB_1.add(listB1);
+		JList listB2 = new JList(lB2);
+		listB2.setBackground(Color.ORANGE);
+		menaceB_2.add(listB2);
+		JList listB3 = new JList(lB3);
+		listB3.setBackground(Color.RED);
+		menaceB_3.add(listB3);
 		
 
 	}
 	
 	
+
 }
+
+
+//JList

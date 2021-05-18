@@ -29,13 +29,13 @@ import java.awt.Insets;
 public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEventListener, RadiationEventListener{
 	private Collection<AnomalieEvent> liste_event =  new ArrayList<AnomalieEvent>();
 	private JFrame frame;
-	private final JPanel menaceA_1 = new JPanel();
+	private final static JPanel menaceA_1 = new JPanel();
 	private final JPanel menaceA_2 = new JPanel();
 	private final JPanel menaceA_3 = new JPanel();
 	
-	private static JTextField ano1_text = new JTextField();
-	private static JTextField ano2_text = new JTextField();
-	private static JTextField ano3_text = new JTextField();
+	private static JTextArea ano1_text = new JTextArea();
+	private static JTextArea ano2_text = new JTextArea();
+	private static JTextArea ano3_text = new JTextArea();
 	
 	
 
@@ -138,26 +138,20 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		
 		/*
 		 * texte pour l'affichage des events
-		 */
-		
-		ano1_text.setBackground(Color.YELLOW);
-		ano1_text.setBounds(10, 10, 300, 115);
-		ano1_text.setText(liste_ano.getListe_ano_A1());
-		menaceA_1.add(ano1_text);
-		ano1_text.setVisible(false);
+		 */		
 		menaceA_2.setLayout(null);
 		
-		
 		ano2_text.setBackground(Color.ORANGE);
-		ano2_text.setBounds(10, 10, 300, 115);
+		ano2_text.setBounds(0, 0, 320, 135);
 		ano2_text.setText(liste_ano.toString());
 		menaceA_2.add(ano2_text);
 		ano2_text.setVisible(false);
 		menaceA_3.setLayout(null);
+		ano3_text.setForeground(Color.BLACK);
 		
 		
 		ano3_text.setBackground(Color.RED);
-		ano3_text.setBounds(10, 10, 300, 115);
+		ano3_text.setBounds(0, 0, 320, 135);
 		ano3_text.setText(liste_ano.toString());
 		menaceA_3.add(ano3_text);
 		ano3_text.setVisible(false);
@@ -205,7 +199,13 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		lA1 = liste_ano.getListe_ano_A1();
 		
 		for (AnomalieEvent ano : lA1) {
-			String txt = 
+			String txt = ano1_text.getText();
+			txt += ano.get_type_anomalie() + '\n';
+			ano1_text.setText(txt);
+			ano1_text.setBackground(Color.YELLOW);
+			ano1_text.setBounds(0, 0, 320, 135);
+			menaceA_1.add(ano1_text);
+			ano1_text.setVisible(true);
 			
 		}
 	}

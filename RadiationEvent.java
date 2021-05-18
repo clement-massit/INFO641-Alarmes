@@ -23,10 +23,8 @@ public class RadiationEvent extends AnomalieEvent {
 
 	@Override
 	public String toString() {
-		return "RadiationEvent [level_rad=" + level_rad + ", type_anomalie=" + type_anomalie + ", getDate_apparition()="
-				+ getDate_apparition() + ", getLocalisation()=" + getLocalisation() + ", getNiveau()=" + getNiveau()
-				+ ", getFormat()=" + getFormat() + ", getSource()=" + getSource() + ", toString()=" + super.toString()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";
+		return "Type d'anomalie : " + type_anomalie + "\nNiveau de radiation : " + getLevel_rad() + "\ngetDate d'apparition : "
+				+ getDate_apparition() + "\nLocalisation : " + getLocalisation() + "\nNiveau d'improtance : " + getNiveau();
 	}
 	
 	

@@ -83,6 +83,8 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		initialize(liste_ano);
 		
 	}
+	
+	
 
 	/**
 	 * Initialize the contents of the frame.
@@ -189,6 +191,18 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		panelB.add(menaceB_3);
 		menaceB_3.setLayout(null);
 		
+		
+		
 
+	}
+	
+	public static void afficher_liste(Liste_anomalie liste_ano) {
+		Collection<AnomalieEvent> lA1 =  new ArrayList<AnomalieEvent>();
+		lA1 = liste_ano.getListe_ano_A1();
+		
+		for (AnomalieEvent ano : lA1) {
+			String txt = 
+			
+		}
 	}
 }

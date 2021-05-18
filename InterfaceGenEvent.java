@@ -45,7 +45,7 @@ public class InterfaceGenEvent{
 	private void initialize(Liste_anomalie liste_ano) {
 		
 		/*
-		 * Crï¿½ation des listes pour les JComboBox
+		 * Création des listes pour les JComboBox
 		 */
 		
 		String[] bat = {"Bâtiment A", "Bâtiment B", "Bâtiment C"};
@@ -53,7 +53,7 @@ public class InterfaceGenEvent{
 		String[] level = {"1", "2", "3"};
 		
 		/*
-		 * Crï¿½ation de la frame/fenï¿½tre
+		 * Création de la frame/fenêtre
 		 */
 		
 		frame = new JFrame();
@@ -61,14 +61,14 @@ public class InterfaceGenEvent{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		/*
-		 * Crï¿½ation du panel/calque
+		 * Création du panel/calque
 		 */
 		
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);		
 		/*
-		 * Crï¿½ation des objets d'entrï¿½e
+		 * Création des objets d'entrée
 		 */
 		
 		JComboBox choix_type_ano = new JComboBox(anomalie);
@@ -153,6 +153,8 @@ public class InterfaceGenEvent{
 		
 		
 		rad_ano.setVisible(false);
+		
+		MoniteurInterfaceGraphique moniteur = new MoniteurInterfaceGraphique(liste_ano);
 		
 		
 		/*
@@ -260,7 +262,8 @@ public class InterfaceGenEvent{
 				level_ano.setVisible(true);
 				
 				//Création + ouverture de l'interfaces des moniteurs
-				MoniteurInterfaceGraphique.Moniteur(liste_ano);
+				moniteur.Moniteur(liste_ano);
+				moniteur.afficher_liste(liste_ano);
 			}
 		});
 		

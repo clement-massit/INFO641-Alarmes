@@ -53,8 +53,8 @@ public class Liste_anomalie {
 	}
 
 
-	public String getListe_ano_A1() {
-		return liste_ano_A1.toString();
+	public Collection<AnomalieEvent> getListe_ano_A1() {
+		return liste_ano_A1;
 	}
 	public void setListe_ano_A1(Collection<AnomalieEvent> liste_ano_A1) {
 		this.liste_ano_A1 = liste_ano_A1;

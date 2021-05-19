@@ -13,7 +13,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseMotionListener;
+
 
 import javax.swing.JPanel;
 import java.util.ArrayList;
@@ -61,6 +61,7 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 				try {
 					MoniteurInterfaceGraphique window = new MoniteurInterfaceGraphique(liste_ano);
 					window.frame.setVisible(true);
+				
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -156,6 +157,9 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		panelB.add(menaceB_3);
 		
 		
+		
+		
+		
 		DefaultListModel lA1 = liste_ano.getListe_txt_ano_A1();
 		DefaultListModel lA2 = liste_ano.getListe_txt_ano_A2();
 		DefaultListModel lA3 = liste_ano.getListe_txt_ano_A3();
@@ -181,40 +185,50 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		JList listB3 = new JList(lB3);
 		listB3.setBackground(Color.RED);
 		menaceB_3.add(listB3);
-		
+				
 		panelA.setLayout(null);
 		panelB.setLayout(null);
 		
 		
-		
+				
 		////////////////////	BOUTONS TRAITER		/////////////////////////////////
-		JButton btn_traiter_A1 = new JButton("Traiter");
+		JButton btn_traiter_A1 = new JButton("Afficher");
 		btn_traiter_A1.setBounds(245, 20, 85, 21);
 		panelA.add(btn_traiter_A1);
 		
-		JButton btn_traiter_A2 = new JButton("Traiter");
+		JButton btn_traiter_A2 = new JButton("Afficher");
 		btn_traiter_A2.setBounds(245, 196, 85, 21);
 		panelA.add(btn_traiter_A2);
 		
-		JButton btn_traiter_A3 = new JButton("Traiter");
+		JButton btn_traiter_A3 = new JButton("Afficher");
 		btn_traiter_A3.setBounds(245, 372, 85, 21);
 		panelA.add(btn_traiter_A3);
 		
-		JButton btn_traiter_B1 = new JButton("Traiter");
+		JButton btn_traiter_B1 = new JButton("Afficher");
 		btn_traiter_B1.setBounds(245, 20, 85, 21);
 		panelB.add(btn_traiter_B1);
 						
-		JButton btn_traiter_B2 = new JButton("Traiter");
+		JButton btn_traiter_B2 = new JButton("Afficher");
 		btn_traiter_B2.setBounds(245, 196, 85, 21);
 		panelB.add(btn_traiter_B2);
 				
-		JButton btn_traiter_B3 = new JButton("Traiter");
+		JButton btn_traiter_B3 = new JButton("Afficher");
 		btn_traiter_B3.setBounds(245, 372, 85, 21);
 		panelB.add(btn_traiter_B3);
+		
+		JButton ok = new JButton("OK");
+		
+		
+		
+	
 
 		////////////////////	FRAME & LABEL INFORMATIONS POUR LES ERREURS		/////////////////////////////////
 		JFrame infos = new JFrame("INFORMATIONS");
 		JLabel informations = new JLabel("Vous avez déjà supprimé l'anomalie sur ce moniteur");
+		infos.add(ok);
+		ok.setVisible(true);
+		
+		
 		informations.setFont(new Font("Tahoma", Font.ITALIC, 14));
 		informations.setForeground(Color.RED);
 		informations.setHorizontalAlignment(SwingConstants.CENTER);
@@ -223,15 +237,20 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		infos.setResizable(false);
 		infos.setAlwaysOnTop(true);
 		infos.setLocationRelativeTo(null);
-		infos.setSize(500, 100);;
+		infos.setSize(500, 200);;
 		infos.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		
 		
 		////////////////////	ACTION PERFORMED SUR LES BOUTONS TRAITER 	/////////////////////////////////
 		btn_traiter_A1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					lA1.remove(0);
-					infos.dispose();
+					
+					String hash_code = (String) listA1.getSelectedValue();
+					int id = Integer.parseInt(hash_code);
+					
+					liste_ano.display_selected_anomalie(id, 1);
 					
 				} catch (Exception e2) {
 					infos.setVisible(true);
@@ -310,4 +329,7 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		
 
 	}
+
+
+	
 }

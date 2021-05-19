@@ -272,6 +272,7 @@ public class InterfaceGenEvent{
 
 					String i4 = gaz_ano.getText();
 					gaz_ano.setText(i4 + gaz);
+					
 				}
 				else if (type == "Incendie") {
 					IncendieEventSource inc_source = new IncendieEventSource(localisation);

@@ -7,6 +7,7 @@ public class Main{
 		InterfaceGenEvent fenetre = new InterfaceGenEvent(liste_ano);
 		
 		fenetre.main(liste_ano);
+		
 
 	
 	}

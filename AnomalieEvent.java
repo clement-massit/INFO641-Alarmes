@@ -53,9 +53,15 @@ public abstract class AnomalieEvent extends EventObject {
 		System.out.println(" - Date : " + this.date_apparition);
 		System.out.println(" - Localisation : " + this.localisation);
 		System.out.println(" - Niveau de danger : " + this.niveau + "\n");
+		System.out.println(hashCode());
 		
 		
 	}
+
+	
+	
+	
+	
 	
 	
 	

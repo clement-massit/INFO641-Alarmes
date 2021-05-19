@@ -60,41 +60,68 @@ public class Liste_anomalie {
 		}
 	}
 	
+	/**
+	 * @wbp.parser.entryPoint
+	 */
 	private void window_creation(AnomalieEvent anomalie) {
-		        
-        JLabel type_ano = new JLabel("- Type de l'\u00E9venement : " + anomalie.get_type_anomalie());
-        type_ano.setBounds(109, 66, 258, 14);
-       
-        pan.add(type_ano);
-       
-        
-        JLabel lieu_ano = new JLabel("- Lieu de l'\u00E9venement : " + anomalie.getLocalisation());
-        lieu_ano.setBounds(109, 96, 258, 14);
-        pan.add(lieu_ano);
-      
-        
-        JLabel level_ano = new JLabel("- Niveau de l'\u00E9venement : " + anomalie.getNiveau());
-        level_ano.setBounds(109, 126, 258, 14);
-        pan.add(level_ano);
-        
-        
-        JLabel gaz_ano = new JLabel("- Type de gaz : ");
-        gaz_ano.setBounds(109, 156, 258, 14);
-        pan.add(gaz_ano);
-      
-        
-        JLabel rad_ano = new JLabel("- Niveau de radiation : " );
-        rad_ano.setBounds(109, 156, 258, 14);
-        pan.add(rad_ano);
-      
+		fenetre_anomalie.setTitle("Detail de l'anomalie");
         
 		
-		fenetre_anomalie.setSize(450,150);
+		fenetre_anomalie.setSize(500,250);
 		fenetre_anomalie.setAlwaysOnTop(true);
 		fenetre_anomalie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre_anomalie.setLocationRelativeTo(pan);
 	
 		fenetre_anomalie.setContentPane(pan);
+		pan.setLayout(null);
+		
+		JLabel type_ano = new JLabel("Type de l'anomalie :");
+		type_ano.setHorizontalAlignment(SwingConstants.CENTER);
+		type_ano.setBounds(43, 19, 400, 18);
+		
+		JLabel date_ano = new JLabel("Date d'appartition de l'anomalie : ");
+		date_ano.setHorizontalAlignment(SwingConstants.CENTER);
+		date_ano.setBounds(43, 52, 400, 18);
+		
+		JLabel lvl_ano = new JLabel("Niveau de l'anomalie : ");
+		lvl_ano.setHorizontalAlignment(SwingConstants.CENTER);
+		lvl_ano.setBounds(43, 85, 400, 18);
+		
+		JLabel loca_ano = new JLabel("Lieu de l'anomalie : ");
+		loca_ano.setHorizontalAlignment(SwingConstants.CENTER);
+		loca_ano.setBounds(43, 118, 400, 18);
+		
+		JLabel type_gaz_ano = new JLabel("Type de gaz : ");
+		type_gaz_ano.setHorizontalAlignment(SwingConstants.CENTER);
+		type_gaz_ano.setBounds(43, 151, 400, 18);
+		type_gaz_ano.setVisible(false);
+		
+		JLabel lvl_rad_ano = new JLabel("Niveau de radiation de l'anomalie : ");
+		lvl_rad_ano.setHorizontalAlignment(SwingConstants.CENTER);
+		lvl_rad_ano.setBounds(43, 151, 400, 18);
+		lvl_rad_ano.setVisible(false);
+		
+		if (anomalie.get_type_anomalie() == "Gaz") {
+			//String txt_gaz = type_gaz_ano.getText() + anomalie.getType_gaz();
+			type_gaz_ano.setVisible(true);
+		}
+		else if(anomalie.get_type_anomalie() == "Radiation") {
+			//String txt_rad = lvl_rad_ano.getText() + anomalie.getLevel_rad();
+			lvl_rad_ano.setVisible(true);
+		}
+		type_ano.setText(type_ano.getText() + anomalie.get_type_anomalie());
+		date_ano.setText(date_ano.getText() + anomalie.getDate_apparition());
+		lvl_ano.setText(lvl_ano.getText() + anomalie.getNiveau());
+		loca_ano.setText(loca_ano.getText() + anomalie.getLocalisation());
+		
+			
+		
+		pan.add(type_ano);
+		pan.add(date_ano);
+		pan.add(lvl_ano);
+		pan.add(loca_ano);
+		pan.add(type_gaz_ano);
+		pan.add(lvl_rad_ano);
 		fenetre_anomalie.setVisible(true);
 		
 		
@@ -172,14 +199,5 @@ public class Liste_anomalie {
 				+ ", liste_txt_ano_A3=" + liste_txt_ano_A3 + ", liste_txt_ano_B1=" + liste_txt_ano_B1
 				+ ", liste_txt_ano_B2=" + liste_txt_ano_B2 + ", liste_txt_ano_B3=" + liste_txt_ano_B3 + "]";
 	}
-
-
-	
-	
-	
-	
-	
-
-	
 }
 

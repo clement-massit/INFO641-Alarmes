@@ -66,7 +66,7 @@ public class InterfaceGenEvent{
 		
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 480, 318);
+		frame.setBounds(0, 100, 480, 318);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		/*

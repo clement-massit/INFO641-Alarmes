@@ -86,7 +86,7 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setAlwaysOnTop(true);
-		frame.setBounds(600, 100, 800, 670);
+		frame.setBounds(480, 40, 800, 670);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();

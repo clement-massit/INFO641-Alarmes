@@ -75,7 +75,7 @@ public class Liste_anomalie {
 		fenetre_anomalie.setAlwaysOnTop(true);
 		fenetre_anomalie.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		fenetre_anomalie.setLocationRelativeTo(pan);
-	
+		fenetre_anomalie.setResizable(false);
 		fenetre_anomalie.setContentPane(pan);
 		pan.setLayout(null);
 		pan.removeAll();

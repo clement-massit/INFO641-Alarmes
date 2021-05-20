@@ -47,15 +47,30 @@ public abstract class AnomalieEvent extends EventObject {
 		return null;
 	}
 	
+	public String getType_gaz() {
+		return null;
+	}
+	public int getLevel_rad() {
+		return null;
+	}
+	
+
 	public void print_Anomalie() {
 		System.out.println("Détail de l'anomalie " + this + ":");
 		System.out.println(" - Type de danger : " + this.get_type_anomalie());
 		System.out.println(" - Date : " + this.date_apparition);
 		System.out.println(" - Localisation : " + this.localisation);
 		System.out.println(" - Niveau de danger : " + this.niveau + "\n");
+		System.out.println(hashCode());
 		
 		
 	}
+
+
+	
+	
+	
+	
 	
 	
 	

@@ -8,8 +8,9 @@ public class GazEvent extends AnomalieEvent{
 
 	}
 	
+	@Override
 	public String getType_gaz() {
-		return type_gaz;
+		return(this.type_gaz);
 	}
 	public void setType_gaz(String type_gaz) {
 		this.type_gaz = type_gaz;
@@ -25,6 +26,7 @@ public class GazEvent extends AnomalieEvent{
 		return "Type d'anomalie : " + type_anomalie + "\nType de gaz : " + type_gaz + "\ngetDate d'apparition : "
 				+ getDate_apparition() + "\nLocalisation : " + getLocalisation() + "\nNiveau d'improtance : " + getNiveau();
 	}
+	
 	
 	
 }

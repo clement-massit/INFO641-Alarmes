@@ -8,9 +8,9 @@ public class RadiationEvent extends AnomalieEvent {
 		super(source);
 		
 	}
-
+	@Override
 	public int getLevel_rad() {
-		return level_rad;
+		return this.level_rad;
 	}
 	public void setLevel_rad(int level_rad) {
 		this.level_rad = level_rad;

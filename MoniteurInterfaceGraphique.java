@@ -262,8 +262,10 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		btn_traiter_A2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					lA2.remove(0);
-					infos.dispose();
+					String hash_code = (String) listA2.getSelectedValue();
+					int id = Integer.parseInt(hash_code);
+					
+					liste_ano.display_selected_anomalie(id, 2);
 					
 				} catch (Exception e2) {
 					infos.setVisible(true);
@@ -275,8 +277,10 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		btn_traiter_A3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					lA3.remove(0);
-					infos.dispose();
+					String hash_code = (String) listA3.getSelectedValue();
+					int id = Integer.parseInt(hash_code);
+					
+					liste_ano.display_selected_anomalie(id, 3);
 					
 				} catch (Exception e2) {
 					infos.setVisible(true);
@@ -288,8 +292,10 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		btn_traiter_B1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					lB1.remove(0);
-					infos.dispose();
+					String hash_code = (String) listB1.getSelectedValue();
+					int id = Integer.parseInt(hash_code);
+					
+					liste_ano.display_selected_anomalie(id, 1);
 					
 				} catch (Exception e2) {
 					infos.setVisible(true);
@@ -301,8 +307,10 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		btn_traiter_B2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					lB2.remove(0);
-					infos.dispose();
+					String hash_code = (String) listB2.getSelectedValue();
+					int id = Integer.parseInt(hash_code);
+					
+					liste_ano.display_selected_anomalie(id, 2);
 					
 				} catch (Exception e2) {
 					infos.setVisible(true);
@@ -314,8 +322,10 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		btn_traiter_B3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					lB3.remove(0);
-					infos.dispose();
+					String hash_code = (String) listB3.getSelectedValue();
+					int id = Integer.parseInt(hash_code);
+					
+					liste_ano.display_selected_anomalie(id, 3);
 					
 				} catch (Exception e2) {
 					infos.setVisible(true);

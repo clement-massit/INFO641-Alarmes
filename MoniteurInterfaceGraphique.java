@@ -224,12 +224,12 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 
 		////////////////////	FRAME & LABEL INFORMATIONS POUR LES ERREURS		/////////////////////////////////
 		JFrame infos = new JFrame("INFORMATIONS");
-		JLabel informations = new JLabel("Vous avez déjà supprimé l'anomalie sur ce moniteur");
+		JLabel informations = new JLabel("Vous n'avez pas sélectionné d'anomalie ");
 		infos.add(ok);
 		ok.setVisible(true);
 		
 		
-		informations.setFont(new Font("Tahoma", Font.ITALIC, 14));
+		informations.setFont(new Font("Tahoma", Font.ITALIC, 20));
 		informations.setForeground(Color.RED);
 		informations.setHorizontalAlignment(SwingConstants.CENTER);
 		infos.getContentPane().add(informations, BorderLayout.CENTER);
@@ -237,7 +237,7 @@ public class MoniteurInterfaceGraphique implements GazEventListener, IncendieEve
 		infos.setResizable(false);
 		infos.setAlwaysOnTop(true);
 		infos.setLocationRelativeTo(null);
-		infos.setSize(500, 200);;
+		infos.setSize(500, 150);;
 		infos.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		

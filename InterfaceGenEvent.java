@@ -113,8 +113,8 @@ public class InterfaceGenEvent{
 		panel.add(btnGene);
 		btnGene.setVisible(false);
 		
-		JButton btn_retour = new JButton("Créer une nouvelle anomalie");
-		btn_retour.setBounds(85, 150, 300, 23);
+		JButton btn_creer_new_anomalie = new JButton("Créer une nouvelle anomalie");
+		btn_creer_new_anomalie.setBounds(85, 110, 300, 23);
 		
 		//////////////	JLabel		////////////////////////////////
 		JLabel affichage_type_ano = new JLabel("Vous avez sélectionné un évenement de type ");
@@ -239,13 +239,13 @@ public class InterfaceGenEvent{
 				type_gaz.setVisible(false);
 				niveau_rad.setVisible(false);
 				btnGene.setVisible(false);
-				affichage_type_ano.setText("Vous avez sï¿½lï¿½ctionnï¿½ un ï¿½venement de type ");
+				affichage_type_ano.setText("Vous avez sélectionné un évenement de type ");
 			}
 		});
 		
 		btnGene.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btn_retour.setVisible(true);
+				btn_creer_new_anomalie.setVisible(true);
 				Title_second_page.setVisible(false);
 				panel.setVisible(false);
 				
@@ -254,7 +254,7 @@ public class InterfaceGenEvent{
 				frame_creation_event.setLayout(null);
 				frame_creation_event.setBounds(0, 0, 466, 233);
 				frame.getContentPane().add(frame_creation_event);
-				frame_creation_event.add(btn_retour);
+				frame_creation_event.add(btn_creer_new_anomalie);
 				
 				
 				String type = choix_type_ano.getSelectedItem().toString();
@@ -306,7 +306,7 @@ public class InterfaceGenEvent{
 				
 				
 				
-				btn_retour.addActionListener(new ActionListener() {
+				btn_creer_new_anomalie.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						panel.setVisible(true);
 						Title_first_page.setVisible(true);
@@ -319,7 +319,7 @@ public class InterfaceGenEvent{
 						choix_level.setVisible(false);
 						type_gaz.setVisible(false);
 						btnGene.setVisible(false);
-						btn_retour.setVisible(false);
+						btn_creer_new_anomalie.setVisible(false);
 					}
 				});
 				

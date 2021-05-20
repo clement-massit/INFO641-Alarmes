@@ -23,12 +23,13 @@ public class MoniteurA implements GazEventListener, IncendieEventListener{
 	@Override
 	public void onEvent(IncendieEvent inc_event) {
 		// TODO Auto-generated method stub
-		
+		liste_event.add(inc_event);
 	}
 
 	@Override
 	public void onEvent(GazEvent gaz_event) {
 		// TODO Auto-generated method stub
+		liste_event.add(gaz_event);
 		
 	}
 }

@@ -3,7 +3,8 @@
 This project is an example of using event model in case of some alarms in lab. There are 3 types of events :
  * Gaz
  * Radiation
- * Fire  
+ * Fire    
+ 
  It uses an easy to use graphic interface.  
  
  ## Installation instructions  

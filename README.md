@@ -17,5 +17,6 @@ git clone https://github.com/clement-massit/INFO641-Alarmes
 You just have to launch in 'build' folder, the .jar file.  
 ```
 programme.jar
-```
- 
+```  
+
+Enjoy the uses !
